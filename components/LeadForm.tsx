@@ -46,7 +46,7 @@ export function LeadForm({ compact = false, source = "free-audit" }: { compact?:
 
   if (state === "done") {
     return (
-      <div role="status" className="card border-cyan p-8 text-center shadow-[0_0_50px_-10px_rgb(34_211_238/0.5)]">
+      <div role="status" className="card border-cyan p-8 text-center">
         <span className="mx-auto grid h-14 w-14 place-items-center rounded-full border border-cyan text-cyan"><Icon name="check" size={28} /></span>
         <h3 className="display h-md mt-4">Cheers. Got it<span className="o">.</span></h3>
         <p className="mt-3">We'll get back to you within 2 working days with your audit. Check your inbox — we've sent a confirmation.</p>

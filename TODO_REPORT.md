@@ -8,7 +8,7 @@
 - **TODO_SOCIAL** `content/site.ts` — real profile URLs (hidden until set).
 - **TODO_CONFIRM** `content/site.ts` — confirm `hello@locallion.co.uk` exists.
 - **TODO_PHOTO** `app/(site)/about/page.tsx` — real photo of Rob; rewrite the About copy in your own words.
-- **TODO_ASSET** — `public/brand/lion-hero.webp` (+ PNG/AVIF), final `logo.svg` and `logo-mark.svg`. Placeholder lion/logo in use. Trade-prop variants later.
+- **TODO_ASSET** — final `public/brand/logo.svg` and `logo-mark.svg` (simple wordmark placeholders in use). The lion mascot was removed from the design.
 
 ## Needs review (TODO_REVIEW)
 - Plumbers, Roofers, Builders pages (`content/trades/*.ts`, `needsReview: true`). Electricians is final copy.

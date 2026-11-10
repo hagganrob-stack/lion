@@ -23,7 +23,7 @@ export function TradeCards({ current }: { current?: string }) {
                 <Link
                   href={`/${t.slug}`}
                   className={`group card relative flex h-full flex-col overflow-hidden p-6 transition-all duration-300 hover:-translate-y-1 ${
-                    orange ? "hover:border-orange hover:shadow-[0_0_40px_-6px_rgb(255_122_26/0.5)]" : "hover:border-cyan hover:shadow-[0_0_40px_-6px_rgb(34_211_238/0.5)]"
+                    orange ? "hover:border-orange" : "hover:border-cyan"
                   }`}
                 >
                   <span className={`grid h-14 w-14 place-items-center rounded-xl border border-line bg-surface-2 ${orange ? "o" : "c"}`}>

@@ -7,7 +7,6 @@ import { PricingCards } from "@/components/PricingCards";
 import { WorkTeaser } from "@/components/WorkTeaser";
 import { FAQ } from "@/components/FAQ";
 import { CTA } from "@/components/CTA";
-import { BoltDivider } from "@/components/Bolt";
 import { Icon } from "@/components/Icons";
 import { homeFaqs } from "@/content/faqs";
 import { reviews } from "@/content/reviews";
@@ -31,9 +30,8 @@ export default function Home() {
     <>
       <Hero
         eyebrow={<>Websites / SEO / Google Ads <span className="hidden text-muted sm:inline">—</span> for trades businesses</>}
-        h1={<>Get found.<br />Get <span className="c glow-text-c">more</span> <span className="o glow-text-o">jobs.</span></>}
+        h1={<>Get found.<br />Get <span className="c">more</span> <span className="o">jobs.</span></>}
         sub="Websites, local SEO and Google Ads for electricians, plumbers, roofers and builders who want their phone ringing — not their weekends spent on marketing."
-        prop="lightning"
       />
       <ProofStrip />
       <TradeCards />
@@ -48,8 +46,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <BoltDivider />
 
       <section className="section">
         <div className="wrap">
@@ -87,7 +83,7 @@ export default function Home() {
       )}
 
       <FAQ faqs={homeFaqs} />
-      <CTA prop="lightning" />
+      <CTA />
     </>
   );
 }

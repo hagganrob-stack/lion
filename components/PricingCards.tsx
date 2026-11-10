@@ -14,7 +14,7 @@ export function PricingCards({ preview = false }: { preview?: boolean }) {
           {plans.map((p, i) => (
             <div
               key={p.id}
-              className={`reveal card relative flex flex-col p-7 ${p.popular ? "border-orange shadow-[0_0_60px_-10px_rgb(255_122_26/0.5)] lg:-my-3 lg:py-10" : ""}`}
+              className={`reveal card relative flex flex-col p-7 ${p.popular ? "border-orange lg:-my-3 lg:py-10" : ""}`}
               style={{ ["--i" as string]: i }}
             >
               {p.popular && (
@@ -22,7 +22,7 @@ export function PricingCards({ preview = false }: { preview?: boolean }) {
               )}
               <h3 className="display h-md">{p.name}</h3>
               <p className="mt-4 flex items-baseline gap-2">
-                <span className={`display text-6xl ${p.popular ? "o glow-text-o" : "text-ink"}`}>{p.price}</span>
+                <span className={`display text-6xl ${p.popular ? "o" : "text-ink"}`}>{p.price}</span>
                 <span className="text-sm">{p.per}</span>
               </p>
               {p.note && <p className="mt-1 text-sm font-semibold text-ink/80">{p.note}</p>}

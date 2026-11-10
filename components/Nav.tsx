@@ -69,7 +69,7 @@ export function Nav() {
               Trades <Icon name="chevron" size={16} className={`transition-transform ${dd ? "rotate-180" : ""}`} />
             </button>
             {dd && (
-              <div className="absolute left-0 top-full mt-2 w-60 rounded-xl border border-line bg-surface p-2 shadow-[0_20px_50px_-10px_rgba(0,0,0,.9)]">
+              <div className="absolute left-0 top-full mt-2 w-60 rounded-xl border border-line bg-surface p-2">
                 {trades.map((t) => (
                   <Link key={t.slug} href={`/${t.slug}`} className="block rounded-lg px-3 py-2.5 font-semibold text-ink hover:bg-surface-2 hover:text-cyan">
                     {t.label}

@@ -15,7 +15,7 @@ import { site } from "@/content/site";
 import type { TradeContent } from "@/content/trades/types";
 
 export function TradePage({ t }: { t: TradeContent }) {
-  const hot = t.accent === "cyan" ? "c glow-text-c" : "o glow-text-o";
+  const hot = t.accent === "cyan" ? "c" : "o";
   const [l1, l2, l3] = t.hero.h1;
   return (
     <>
@@ -37,9 +37,8 @@ export function TradePage({ t }: { t: TradeContent }) {
       <Hero
         eyebrow={t.hero.eyebrow}
         h1Class="h-trade"
-        h1={<>{l1}<br /><span className={hot}>{l2}</span><br /><span className="o glow-text-o">{l3}</span></>}
+        h1={<>{l1}<br /><span className={hot}>{l2}</span><br /><span className="o">{l3}</span></>}
         sub={t.hero.sub}
-        prop={t.prop}
         accent={t.accent}
         features={[
           { icon: "search", label: "Rank higher in your area" },
@@ -100,7 +99,7 @@ export function TradePage({ t }: { t: TradeContent }) {
       <PricingCards preview />
       <FAQ faqs={t.faqs} title={`${t.name} FAQ`} />
       <TradeCards current={t.slug} />
-      <CTA title={<>{t.closing.replace(/\?$/, "")}<span className="o">?</span></>} prop={t.prop} />
+      <CTA title={<>{t.closing.replace(/\?$/, "")}<span className="o">?</span></>} />
       <p className="wrap pb-10 text-sm">
         See also <Link href="/pricing" className="c underline">pricing</Link> and the <Link href="/free-audit" className="c underline">free audit</Link>.
       </p>

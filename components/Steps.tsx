@@ -15,7 +15,7 @@ export function Steps({ heading = true }: { heading?: boolean }) {
           {steps.map((s, i) => (
             <li key={s.n} className="reveal card relative overflow-hidden p-7" style={{ ["--i" as string]: i }}>
               <span aria-hidden="true" className={`display absolute -right-2 -top-4 select-none text-[8rem] leading-none opacity-20 ${i === 1 ? "o" : "c"}`}>{s.n}</span>
-              <span className={`display text-6xl ${i === 1 ? "o glow-text-o" : "c glow-text-c"}`}>{s.n}</span>
+              <span className={`display text-6xl ${i === 1 ? "o" : "c"}`}>{s.n}</span>
               <h3 className="display h-md mt-3">{s.title}</h3>
               <p className="mt-3">{s.text}</p>
             </li>

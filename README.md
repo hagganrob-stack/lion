@@ -19,7 +19,6 @@ Real reviews: `content/reviews.ts` (the reviews section stays hidden while it's 
 Copy `.env.example` to `.env.local`. See that file; none are needed to build.
 
 ## Brand assets
-Drop `public/brand/lion-hero.webp` in and the placeholder lion is replaced automatically (next/image, priority).
-Replace `public/brand/logo.svg` and `logo-mark.svg` with final art; the in-page logo is `components/Logo.tsx`.
+Logo is a wordmark (`components/Logo.tsx`). Replace `public/brand/logo.svg` and `logo-mark.svg` with final art when ready.
 
 See `TODO_REPORT.md` for everything still needed from Rob.

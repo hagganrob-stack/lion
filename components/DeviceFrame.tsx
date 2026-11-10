@@ -6,7 +6,7 @@ export function DeviceFrame({ label = "Demo", accent = "cyan" }: { label?: strin
   return (
     <div className="relative mx-auto max-w-4xl" role="img" aria-label={`${label} website preview: a laptop and phone showing a trades website with a hero, call button and service cards`}>
       <span className="absolute -top-3 left-4 z-10 rounded-full bg-orange px-3.5 py-1 text-xs font-extrabold uppercase tracking-widest text-bg">{label}</span>
-      <div className="overflow-hidden rounded-2xl border border-line bg-surface shadow-[0_30px_80px_-20px_rgba(0,0,0,.9),0_0_60px_-20px_rgb(34_211_238/0.4)]">
+      <div className="overflow-hidden rounded-2xl border border-line bg-surface">
         <div className="flex items-center gap-2 border-b border-line bg-surface-2 px-4 py-3">
           <i className="h-3 w-3 rounded-full bg-[#ff5f57]" /><i className="h-3 w-3 rounded-full bg-[#febc2e]" /><i className="h-3 w-3 rounded-full bg-[#28c840]" />
           <span className="ml-3 h-6 flex-1 rounded-md bg-bg/70" />
@@ -28,7 +28,7 @@ export function DeviceFrame({ label = "Demo", accent = "cyan" }: { label?: strin
           </div>
         </div>
       </div>
-      <div className="absolute -bottom-6 -right-2 hidden w-28 overflow-hidden rounded-[1.4rem] border-4 border-surface-2 bg-bg shadow-[0_20px_50px_-10px_rgba(0,0,0,.9)] sm:block md:w-36">
+      <div className="absolute -bottom-6 -right-2 hidden w-28 overflow-hidden rounded-[1.4rem] border-4 border-surface-2 bg-bg sm:block md:w-36">
         <div className="space-y-2 p-3 pt-5">
           <div className="h-2 w-8 rounded-full" style={{ background: a }} />
           <div className="h-4 w-full rounded bg-ink/90" /><div className="h-4 w-8/12 rounded bg-ink/90" />
