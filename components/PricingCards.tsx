@@ -4,6 +4,7 @@ import { Icon } from "./Icons";
 import { SectionHead } from "./SectionHead";
 
 export function PricingCards({ preview = false }: { preview?: boolean }) {
+  const H = preview ? "h3" : "h2";
   return (
     <section className="section">
       <div className="wrap">
@@ -18,9 +19,9 @@ export function PricingCards({ preview = false }: { preview?: boolean }) {
               style={{ ["--i" as string]: i }}
             >
               {p.popular && (
-                <span className="absolute -top-3.5 left-7 rounded-full bg-orange px-3.5 py-1 text-xs font-extrabold uppercase tracking-widest text-bg">Most popular</span>
+                <span className="absolute -top-3.5 left-7 rounded-full bg-orange px-3.5 py-1 text-xs font-extrabold uppercase tracking-widest text-ink">Most popular</span>
               )}
-              <h3 className="display h-md">{p.name}</h3>
+              <H className="display h-md">{p.name}</H>
               <p className="mt-4 flex items-baseline gap-2">
                 <span className={`display text-6xl ${p.popular ? "o" : "text-ink"}`}>{p.price}</span>
                 <span className="text-sm">{p.per}</span>

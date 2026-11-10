@@ -19,6 +19,6 @@ Real reviews: `content/reviews.ts` (the reviews section stays hidden while it's 
 Copy `.env.example` to `.env.local`. See that file; none are needed to build.
 
 ## Brand assets
-Logo is a wordmark (`components/Logo.tsx`). Replace `public/brand/logo.svg` and `logo-mark.svg` with final art when ready.
+Style: warm off-white, charcoal, copper and blue-grey, Montserrat headings. Logo is a layered "L" mark + wordmark (`components/Logo.tsx`). Replace `public/brand/logo.svg` and `logo-mark.svg` with final art when ready.
 
 See `TODO_REPORT.md` for everything still needed from Rob.

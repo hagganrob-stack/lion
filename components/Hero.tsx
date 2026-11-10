@@ -32,7 +32,7 @@ export function Hero({
 }) {
   return (
     <section className="relative isolate overflow-hidden pt-28 pb-16 md:pt-36 md:pb-24">
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,#0e1626_0%,#070b14_70%)]" aria-hidden="true" />
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,#eee9df_0%,#faf8f4_75%)]" aria-hidden="true" />
       <div className="wrap grid items-center gap-12 lg:grid-cols-[1.08fr_0.92fr]">
         <div>
           <p className="eyebrow">{eyebrow}</p>

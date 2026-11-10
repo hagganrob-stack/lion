@@ -23,4 +23,4 @@
 - Demo sites on /work and trade pages are wireframe previews labelled "Demo" — replace with real demo screenshots if you build them.
 
 ## Measured so far (local, mobile Lighthouse)
-Home 97/100/96/100 · Electricians 96/100/96/100 · LCP 0.9s · CLS 0. Re-run on the deployed URL (best-practices dips locally only because Vercel's analytics scripts 404 off-platform).
+Home 100/100/96/100 · Electricians 100/100/96/100 · Pricing ~95/100/96/100 · LCP 0.9s (Pricing 2.6s in the lab, CLS 0). Re-run on the deployed URL (best-practices dips locally only because Vercel's analytics scripts 404 off-platform).

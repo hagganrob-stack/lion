@@ -1,14 +1,38 @@
 @import "tailwindcss";
 
+/*
+  Palette (from the brand board): Charcoal #1F2933 · Blue grey #64748B · Copper #D97706 · Stone #EAE7E1.
+  Token NAMES are kept from v1 so components don't churn:
+    --white  = headline colour (charcoal)     --cyan   = secondary accent (blue grey)
+    --orange = copper (fills / CTAs)          --bg     = page background
+*/
 :root {
-  --bg: #070b14;
-  --surface: #0e1626;
-  --surface-2: #15203a;
-  --line: #22304d;
-  --cyan: #22d3ee;
-  --orange: #ff7a1a;
-  --white: #f5f7fa;
-  --muted: #9aa6b8;
+  --bg: #faf8f4;
+  --surface: #ffffff;
+  --surface-2: #f1eee8;
+  --line: #ddd8cd;
+  --cyan: #4f5f76;
+  --orange: #d97706;
+  --copper-text: #b45309;
+  --white: #1f2933;
+  --muted: #52606d;
+  --stone: #eae7e1;
+  --focus: #b45309;
+}
+
+/* Charcoal panels (footer, final CTA): re-point the tokens for everything inside. */
+.theme-dark {
+  --bg: #1f2933;
+  --surface: #27323d;
+  --surface-2: #323f4b;
+  --line: #43515f;
+  --cyan: #a9b8cb;
+  --copper-text: #f59e0b;
+  --white: #f7f5f0;
+  --muted: #cbd2d9;
+  --focus: #f59e0b;
+  background: var(--bg);
+  color: var(--muted);
 }
 
 @theme inline {
@@ -20,13 +44,13 @@
   --color-orange: var(--orange);
   --color-ink: var(--white);
   --color-muted: var(--muted);
-  --font-display: var(--font-barlow), "Arial Narrow", Impact, sans-serif;
+  --font-display: var(--font-display), system-ui, sans-serif;
   --font-sans: var(--font-inter), system-ui, sans-serif;
 }
 
 html {
   background: var(--bg);
-  color-scheme: dark;
+  color-scheme: light;
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
 }
@@ -47,35 +71,29 @@ body {
 .display {
   font-family: var(--font-display);
   font-weight: 800;
-  text-transform: uppercase;
-  line-height: 0.93;
-  letter-spacing: 0.005em;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
   color: var(--white);
 }
-.h-hero { font-size: clamp(3.4rem, 1.5rem + 7.4vw, 6.9rem); }
-.h-trade { font-size: clamp(2.7rem, 1.2rem + 4.4vw, 4.7rem); }
-.h-xl { font-size: clamp(2.6rem, 1.6rem + 4.6vw, 5.2rem); }
-.h-lg { font-size: clamp(2rem, 1.4rem + 2.8vw, 3.5rem); }
-.h-md { font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.1rem); }
+.h-hero { font-size: clamp(2.5rem, 1.25rem + 4.9vw, 4.9rem); }
+.h-trade { font-size: clamp(2.3rem, 1.2rem + 3.7vw, 4.2rem); }
+.h-xl { font-size: clamp(2rem, 1.2rem + 3vw, 3.4rem); }
+.h-lg { font-size: clamp(1.7rem, 1.2rem + 1.8vw, 2.5rem); }
+.h-md { font-size: clamp(1.2rem, 1.05rem + 0.7vw, 1.55rem); letter-spacing: -0.015em; }
 .c { color: var(--cyan); }
-.o { color: var(--orange); }
+.o { color: var(--copper-text); }
 
 .eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.75rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--white);
 }
-.eyebrow::after {
-  content: "";
-  width: 2.25rem;
-  height: 2px;
-  background: var(--cyan);
-}
+.eyebrow::after { content: ""; width: 2.25rem; height: 2px; background: var(--orange); }
 
 /* ---------- Layout ---------- */
 .wrap { width: 100%; max-width: 76rem; margin-inline: auto; padding-inline: 1.25rem; }
@@ -84,70 +102,60 @@ body {
 
 /* ---------- Surfaces ---------- */
 .card {
-  background: linear-gradient(180deg, var(--surface) 0%, color-mix(in srgb, var(--surface) 80%, var(--bg)) 100%);
+  background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 1.1rem;
+  border-radius: 0.9rem;
+  box-shadow: 0 1px 2px rgb(31 41 51 / 0.04);
 }
+.theme-dark .card { box-shadow: none; }
 .glass {
-  background: rgb(14 22 38 / 0.65);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 1.1rem;
+  border-radius: 0.9rem;
+  box-shadow: 0 8px 30px -12px rgb(31 41 51 / 0.18);
 }
 
 /* ---------- Buttons ---------- */
 .btn {
-  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
   min-height: 3.1rem;
   padding: 0.8rem 1.6rem;
-  border-radius: 0.7rem;
+  border-radius: 0.6rem;
   font-weight: 700;
   font-size: 1rem;
-  letter-spacing: 0.01em;
   text-decoration: none;
   cursor: pointer;
-  transition: box-shadow 0.25s, transform 0.25s, background 0.25s, border-color 0.25s;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s, color 0.2s;
 }
-.btn .arr { transition: transform 0.25s; }
+.btn .arr { transition: transform 0.2s; }
 .btn:hover .arr { transform: translateX(4px); }
-.btn-primary {
-  background: var(--orange);
-  color: var(--bg);
-}
-.btn-primary:hover { background: #ff8c38; transform: translateY(-1px); }
-.btn-ghost {
-  color: var(--cyan);
-  border: 1.5px solid var(--cyan);
-}
-.btn-ghost:hover { background: rgb(34 211 238 / 0.1); }
+.btn-primary { background: var(--orange); color: #1f2933; }
+.btn-primary:hover { background: #e8880f; transform: translateY(-1px); }
+.btn-ghost { color: var(--white); border: 1.5px solid var(--white); background: transparent; }
+.btn-ghost:hover { background: var(--white); color: var(--bg); }
 
 /* ---------- Focus ---------- */
-:focus-visible {
-  outline: 2px solid var(--cyan);
-  outline-offset: 3px;
-  border-radius: 4px;
-}
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 4px; }
 .skip {
   position: fixed; left: 1rem; top: -4rem; z-index: 100;
-  background: var(--orange); color: var(--bg); padding: 0.6rem 1rem; border-radius: 0.5rem; font-weight: 700;
+  background: var(--orange); color: #1f2933; padding: 0.6rem 1rem; border-radius: 0.5rem; font-weight: 700;
 }
 .skip:focus { top: 1rem; }
 
 /* ---------- Form fields ---------- */
 .field label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--white); margin-bottom: 0.4rem; }
 .field input, .field select, .field textarea {
-  width: 100%; background: var(--surface-2); color: var(--white);
-  border: 1px solid var(--line); border-radius: 0.6rem; padding: 0.8rem 0.95rem; font: inherit; font-size: 1rem;
+  width: 100%; background: var(--surface); color: var(--white);
+  border: 1px solid #b9b2a4; border-radius: 0.55rem; padding: 0.8rem 0.95rem; font: inherit; font-size: 1rem;
   min-height: 3rem;
 }
-.field input::placeholder, .field textarea::placeholder { color: #6b7a93; }
+.theme-dark .field input, .theme-dark .field select, .theme-dark .field textarea { background: var(--surface-2); border-color: var(--line); }
+.field input::placeholder, .field textarea::placeholder { color: #7b8794; }
 .field input:focus, .field select:focus, .field textarea:focus {
-  border-color: var(--cyan); outline: none; box-shadow: 0 0 0 3px rgb(34 211 238 / 0.25);
+  border-color: var(--focus); outline: none; box-shadow: 0 0 0 3px rgb(217 119 6 / 0.25);
 }
 
 /* ---------- FAQ (native details) ---------- */
@@ -157,18 +165,17 @@ body {
   padding: 1.25rem 0; color: var(--white); font-weight: 600; font-size: 1.1rem;
 }
 .faq summary::-webkit-details-marker { display: none; }
-.faq summary .plus { flex: none; width: 1.75rem; height: 1.75rem; position: relative; color: var(--cyan); transition: transform 0.3s; }
-.faq details[open] summary .plus { transform: rotate(45deg); color: var(--orange); }
+.faq summary .plus { flex: none; width: 1.75rem; height: 1.75rem; color: var(--copper-text); transition: transform 0.3s; }
+.faq details[open] summary .plus { transform: rotate(45deg); }
 .faq .ans { padding: 0 0 1.4rem; max-width: 62ch; }
 
-/* ---------- Motion ---------- */
-.reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s cubic-bezier(.2,.7,.2,1); transition-delay: calc(var(--i, 0) * 60ms); }
-.reveal.in { opacity: 1; transform: none; }
-.no-js .reveal { opacity: 1; transform: none; }
-
+/* ---------- Motion (subtle, CSS-only: content is always visible, never waits on JS) ---------- */
+@keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@supports (animation-timeline: view()) {
+  .reveal { animation: rise linear both; animation-timeline: view(); animation-range: entry 0% entry 40%; }
+}
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
-  .reveal { opacity: 1; transform: none; }
+  .reveal { animation: none !important; }
 }
-

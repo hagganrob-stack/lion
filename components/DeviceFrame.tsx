@@ -5,7 +5,7 @@ export function DeviceFrame({ label = "Demo", accent = "cyan" }: { label?: strin
   const a = accent === "cyan" ? "var(--cyan)" : "var(--orange)";
   return (
     <div className="relative mx-auto max-w-4xl" role="img" aria-label={`${label} website preview: a laptop and phone showing a trades website with a hero, call button and service cards`}>
-      <span className="absolute -top-3 left-4 z-10 rounded-full bg-orange px-3.5 py-1 text-xs font-extrabold uppercase tracking-widest text-bg">{label}</span>
+      <span className="absolute -top-3 left-4 z-10 rounded-full bg-orange px-3.5 py-1 text-xs font-extrabold uppercase tracking-widest text-ink">{label}</span>
       <div className="overflow-hidden rounded-2xl border border-line bg-surface">
         <div className="flex items-center gap-2 border-b border-line bg-surface-2 px-4 py-3">
           <i className="h-3 w-3 rounded-full bg-[#ff5f57]" /><i className="h-3 w-3 rounded-full bg-[#febc2e]" /><i className="h-3 w-3 rounded-full bg-[#28c840]" />
@@ -16,7 +16,7 @@ export function DeviceFrame({ label = "Demo", accent = "cyan" }: { label?: strin
             <div className="h-3 w-24 rounded-full" style={{ background: a }} />
             <div className="mt-5 h-8 w-11/12 rounded bg-ink/90" /><div className="mt-2.5 h-8 w-8/12 rounded bg-ink/90" />
             <div className="mt-5 h-3 w-10/12 rounded bg-muted/50" /><div className="mt-2 h-3 w-7/12 rounded bg-muted/50" />
-            <div className="mt-6 flex gap-3"><span className="inline-flex h-10 w-32 items-center justify-center rounded-lg bg-orange text-bg"><Icon name="phone" size={18} /></span><span className="h-10 w-28 rounded-lg border" style={{ borderColor: a }} /></div>
+            <div className="mt-6 flex gap-3"><span className="inline-flex h-10 w-32 items-center justify-center rounded-lg bg-orange text-ink"><Icon name="phone" size={18} /></span><span className="h-10 w-28 rounded-lg border" style={{ borderColor: a }} /></div>
           </div>
           <div className="grid grid-cols-2 gap-3">
             {[0, 1, 2, 3].map((i) => (

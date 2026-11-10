@@ -4,7 +4,7 @@ export function CTA({ title, id = "audit" }: { title?: React.ReactNode; id?: str
   return (
     <section id={id} className="section">
       <div className="wrap">
-        <div className="rounded-3xl border border-line bg-surface p-6 md:p-12">
+        <div className="theme-dark rounded-3xl p-6 md:p-12">
           <div className="grid items-center gap-10 lg:grid-cols-[1fr_1fr]">
             <div>
               <p className="eyebrow">Free audit</p>

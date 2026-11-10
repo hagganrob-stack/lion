@@ -14,7 +14,7 @@ export function Footer() {
   const h = "eyebrow !tracking-[0.2em] mb-4 !text-ink after:hidden";
   const a = "block py-1.5 text-muted hover:text-cyan transition-colors";
   return (
-    <footer className="border-t border-line bg-surface/60">
+    <footer className="theme-dark">
       <div className="wrap grid gap-10 py-14 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
           <Logo />

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Barlow_Condensed, Inter } from "next/font/google";
+import { Montserrat, Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
@@ -7,12 +7,11 @@ import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { MobileBar } from "@/components/MobileBar";
 import { ConsentDefaults, ConsentManager } from "@/components/Consent";
-import { RevealObserver } from "@/components/Reveal";
 import { JsonLd } from "@/components/JsonLd";
 import { orgLd } from "@/lib/seo";
 import { site } from "@/content/site";
 
-const display = Barlow_Condensed({ subsets: ["latin"], weight: ["800"], variable: "--font-barlow", display: "swap" });
+const display = Montserrat({ subsets: ["latin"], weight: ["700", "800"], variable: "--font-display", display: "swap" });
 const sans = Inter({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-inter", display: "swap" });
 
 export const metadata: Metadata = {
@@ -26,7 +25,7 @@ export const metadata: Metadata = {
   icons: { icon: "/brand/logo-mark.svg" },
 };
 
-export const viewport: Viewport = { themeColor: "#070B14", colorScheme: "dark" };
+export const viewport: Viewport = { themeColor: "#FAF8F4", colorScheme: "light" };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -41,9 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <MobileBar />
         <ConsentManager />
-        <RevealObserver />
         <JsonLd data={orgLd} />
-        <noscript><style>{`.reveal{opacity:1!important;transform:none!important}`}</style></noscript>
         <Analytics />
         <SpeedInsights />
       </body>

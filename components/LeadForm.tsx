@@ -90,7 +90,7 @@ export function LeadForm({ compact = false, source = "free-audit" }: { compact?:
       <button type="submit" className="btn btn-primary w-full" disabled={state === "sending"}>
         {state === "sending" ? "Sending…" : "Get my free audit"} <Icon name="arrow" size={18} className="arr" />
       </button>
-      <p id="form-msg" role="alert" className={`text-sm ${state === "error" ? "text-orange" : "sr-only"}`}>{msg}</p>
+      <p id="form-msg" role="alert" className={`text-sm ${state === "error" ? "o" : "sr-only"}`}>{msg}</p>
       <p className="text-xs">We'll only use your details to send your audit and chat about your options. See our <Link className="c underline" href="/privacy">privacy policy</Link>.</p>
     </form>
   );

@@ -5,7 +5,7 @@ export function PageHeader({ eyebrow, title, intro, crumb, path }: { eyebrow: st
   return (
     <header className="relative isolate overflow-hidden pt-32 pb-12 md:pt-44 md:pb-16">
       <JsonLd data={breadcrumbLd([{ name: "Home", path: "/" }, { name: crumb, path }])} />
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_80%_0%,#15203a_0%,#070b14_65%)]" aria-hidden="true" />
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,#eee9df_0%,#faf8f4_100%)]" aria-hidden="true" />
       <div className="wrap">
         <p className="eyebrow">{eyebrow}</p>
         <h1 className="display h-xl mt-4 max-w-4xl">{title}</h1>

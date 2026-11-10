@@ -19,7 +19,7 @@ export function WorkTeaser() {
           </Link>
           {demos.map((d, i) => (
             <div key={d.title} className="reveal card flex flex-col p-7" style={{ ["--i" as string]: i + 1 }}>
-              <span className="w-fit rounded-full border border-orange/50 bg-orange/10 px-3 py-1 text-xs font-bold uppercase tracking-widest text-orange">Demo</span>
+              <span className="w-fit rounded-full border border-orange/50 bg-orange/10 px-3 py-1 text-xs font-bold uppercase tracking-widest o">Demo</span>
               <h3 className="display h-md mt-5">{d.title.replace("Demo: ", "")}</h3>
               <p className="mt-1 text-sm font-semibold text-ink/80">{d.trade}</p>
               <p className="mt-4">{d.note}</p>

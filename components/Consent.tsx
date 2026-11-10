@@ -56,9 +56,9 @@ export function ConsentManager() {
         <div
           role="dialog"
           aria-label="Cookie preferences"
-          className="fixed inset-x-3 bottom-[4.75rem] z-[60] mx-auto max-w-2xl rounded-2xl border border-line bg-surface p-5 md:bottom-5"
+          className="fixed inset-x-3 bottom-[4.75rem] z-[60] max-w-sm rounded-xl border border-line bg-surface p-4 md:left-5 md:right-auto md:bottom-5"
         >
-          <p className="text-sm text-ink">
+          <p className="text-xs leading-relaxed text-ink">
             We use cookies to measure how the site performs and which ads bring in enquiries. Nothing non-essential runs unless you say yes.{" "}
             <Link href="/cookies" className="c underline underline-offset-2">
               Cookie policy
