@@ -1,17 +1,25 @@
 ---
+import Photo from './Photo.astro';
+import Glow from './Glow.astro';
 import { site, phoneHref, bookHref, bookIsExternal } from '../data/site';
 ---
-<section class="section section-green on-dark" id="enquire" aria-labelledby="enquire-title">
-  <div class="wrap enquire-grid">
+<section class="section cta" id="enquire" aria-labelledby="enquire-title">
+  <div class="cta-media">
+    <Photo name="beer-garden" alt="A glass of beer on a pub garden table at dusk, with festoon lights glowing behind and people chatting." position="30% 50%" sizes="100vw" />
+  </div>
+  <div class="cta-scrim" aria-hidden="true"></div>
+  <Glow />
+  <div class="container enquire-grid">
     <div class="enquire-copy">
-      <h2 id="enquire-title">Book a 15-minute call</h2>
-      <p class="lede">
+      <h2 id="enquire-title" class="h2">Let’s get your pub’s website sorted.</h2>
+      <p class="cta-sub">Book a 15-minute call</p>
+      <p class="intro">
         Tell me about your pub and I’ll tell you straight whether this is a good fit.
         No hard sell, and no jargon.
       </p>
       {bookIsExternal && (
         <p>
-          <a class="btn btn-brass" href={bookHref} data-book target="_blank" rel="noopener">Pick a time</a>
+          <a class="btn btn-gold" href={bookHref} data-book target="_blank" rel="noopener">Pick a time</a>
         </p>
       )}
       <p class="or-line">{bookIsExternal ? 'Or leave your details and I’ll get back to you.' : 'Leave your details and I’ll get back to you.'}</p>
@@ -80,7 +88,7 @@ import { site, phoneHref, bookHref, bookIsExternal } from '../data/site';
         <input type="hidden" name="landing_page" value="" />
         <input type="hidden" name="referrer" value="" />
 
-        <button class="btn btn-brass btn-block" type="submit">Send my details</button>
+        <button class="btn btn-gold btn-block" type="submit">Send my details</button>
         <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
         <p class="form-fine">
           I’ll only use these details to reply to you. See the <a href="/privacy">privacy policy</a>.

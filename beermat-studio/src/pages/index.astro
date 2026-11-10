@@ -1,4 +1,6 @@
 ---
+import { getImage } from 'astro:assets';
+import { image } from '../lib/images';
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import Problem from '../components/Problem.astro';
@@ -8,12 +10,16 @@ import CaseStudy from '../components/CaseStudy.astro';
 import Prices from '../components/Prices.astro';
 import Faq from '../components/Faq.astro';
 import Enquiry from '../components/Enquiry.astro';
+const hero = image('hero-bar');
+const widths = [480, 768, 1080, 1440, 1920].filter((w) => w <= hero.width);
+const avif = await getImage({ src: hero, widths, sizes: '100vw', format: 'avif' });
 ---
 <Base
   title="Pub Website Design | Websites for Pubs | Beermat Studio"
   description="Pub website design from £39 a month. Websites for pubs with a what's on calendar your staff update from a phone. Built for UK landlords and pub groups."
   schema
 >
+  <link slot="head" rel="preload" as="image" type="image/avif" imagesrcset={avif.srcSet.attribute} imagesizes="100vw" fetchpriority="high" />
   <Hero />
   <Problem />
   <HowItWorks />

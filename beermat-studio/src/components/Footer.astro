@@ -3,12 +3,12 @@ import MatLogo from './MatLogo.astro';
 import { site, phoneHref } from '../data/site';
 import { hasTracking } from '../data/site';
 ---
-<footer class="site-footer on-dark">
-  <div class="wrap footer-grid">
+<footer class="site-footer">
+  <div class="container footer-grid">
     <div>
-      <p class="footer-brand"><MatLogo size={30} /> <span>Beermat Studio</span></p>
+      <p class="footer-brand"><MatLogo size={40} /> <span>Beermat Studio</span></p>
       <p>Built in {site.town} by {site.founder}.</p>
-      {site.legalLine && <p class="legal">{site.legalLine}</p>}
+      {site.legalLine && <p class="legal-line">{site.legalLine}</p>}
     </div>
     <div>
       <p class="footer-head">Get in touch</p>

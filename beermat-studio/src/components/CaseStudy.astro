@@ -1,10 +1,10 @@
 ---
 import { Image } from 'astro:assets';
-import Band from './Band.astro';
-import pints from '../assets/photos/pints-table.jpg';
+import SectionLabel from './SectionLabel.astro';
 import { caseStudy } from '../data/content';
+import { site } from '../data/site';
 
-// Pick up any screenshots dropped into src/assets/case-study/
+// Screenshots come from src/assets/case-study/ (replace the files to update them).
 const found = import.meta.glob<{ default: ImageMetadata }>(
   '/src/assets/case-study/*.{png,jpg,jpeg,webp,avif}',
   { eager: true },
@@ -13,45 +13,54 @@ const slots = caseStudy.slots.map((slot) => {
   const key = Object.keys(found).find((k) => /\/([^/]+)\.[a-z]+$/.exec(k)?.[1] === slot.file);
   return { ...slot, image: key ? found[key].default : null };
 });
-const showDevHints = import.meta.env.DEV;
+const desktop = slots.find((s) => s.kind === 'desktop');
+const mobile = slots.find((s) => s.kind === 'mobile');
 ---
-<Band image={pints} position="50% 45%" labelledby="case-title" id="case-study">
-  <div class="wrap band-copy">
-    <h2 id="case-title">Case study: {caseStudy.name}</h2>
-    <p class="intro">
-      One website for three pubs: {caseStudy.pubs[0]}, {caseStudy.pubs[1]} and {caseStudy.pubs[2]}.
-    </p>
-  </div>
-</Band>
-<section class="section section-board on-dark" aria-label="Case study details">
-  <div class="wrap">
-    <div class="prose">
+<section class="section section-black" id="case-study" aria-labelledby="case-title">
+  <div class="container">
+    <SectionLabel label="Case study" />
+    <h2 id="case-title" class="h2 max-heading showcase-title">{caseStudy.name}</h2>
+
+    <div class="showcase">
+      <figure class="device-desktop">
+        <div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+        {desktop?.image ? (
+          <Image
+            src={desktop.image}
+            alt={desktop.alt}
+            widths={[640, 960, 1280, 1440]}
+            sizes="(min-width: 60rem) 52rem, calc(100vw - 2rem)"
+            loading="lazy"
+            decoding="async"
+          />
+        ) : <div class="shot-placeholder"><span>Screenshot to come</span></div>}
+      </figure>
+      <figure class="device-phone">
+        <div class="phone-notch" aria-hidden="true"></div>
+        {mobile?.image ? (
+          <Image
+            src={mobile.image}
+            alt={mobile.alt}
+            widths={[260, 390, 520]}
+            sizes="(min-width: 60rem) 16rem, 60vw"
+            loading="lazy"
+            decoding="async"
+          />
+        ) : <div class="shot-placeholder shot-tall"><span>Screenshot to come</span></div>}
+      </figure>
+    </div>
+
+    <div class="case-copy">
+      <p class="intro">
+        One website for three pubs: {caseStudy.pubs[0]}, {caseStudy.pubs[1]} and {caseStudy.pubs[2]}.
+      </p>
       <p>
         Each pub gets its own page, so regulars find their local and newcomers find the right one.
         Staff update the events page themselves, so the website says what’s happening at each pub.
       </p>
-    </div>
-
-    <div class="shots">
-      {slots.map((slot) => (
-        <figure class={`shot shot-${slot.kind}`}>
-          {slot.image ? (
-            <Image
-              src={slot.image}
-              alt={slot.alt}
-              widths={slot.kind === 'desktop' ? [640, 960, 1400] : [300, 450, 600]}
-              sizes={slot.kind === 'desktop' ? '(min-width: 64rem) 40rem, calc(100vw - 2rem)' : '(min-width: 64rem) 14rem, 45vw'}
-              loading="lazy"
-              decoding="async"
-            />
-          ) : (
-            <div class="shot-placeholder" data-slot={slot.file}>
-              <span>Screenshot to come</span>
-              {showDevHints && <small>Add src/assets/case-study/{slot.file}.png</small>}
-            </div>
-          )}
-        </figure>
-      ))}
+      {site.caseStudyUrl && (
+        <p><a class="link-arrow" href={site.caseStudyUrl} rel="noopener" target="_blank">See the live site</a></p>
+      )}
     </div>
   </div>
 </section>

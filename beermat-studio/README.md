@@ -2,7 +2,7 @@
 
 One-page landing page for Beermat Studio (beermat.studio): websites for UK pubs. Built for ad traffic on phones.
 
-Astro 7, static output, almost no client JS. One small script handles the cookie banner, tracking, UTM capture and the enquiry form. The form posts to a Vercel serverless function (`api/enquiry.js`) that emails you through Resend.
+Astro 7, static output, almost no client JS. Styled as a sibling of the Keep Calm & Beer It site. One small script handles the cookie banner, tracking, UTM capture and the enquiry form. The form posts to a Vercel serverless function (`api/enquiry.js`) that emails you through Resend.
 
 ## Run it
 
@@ -51,22 +51,48 @@ Everything is in `src/data/site.ts` (search for `TODO`):
 - **Phone**: empty. While empty it is hidden everywhere. Add it and it appears in the footer, the enquiry section and the structured data.
 - **Booking link** (`bookingUrl`): your Calendly or similar. While empty, every "Book a call" button jumps to the enquiry form and the "Pick a time" button is hidden.
 - **Legal line** (`legalLine`): trading entity for the footer and privacy page. Hidden while empty.
-- **Keep Calm & Beer It**: screenshots, and confirmation that you have permission to name the pubs.
+- **Keep Calm & Beer It**: swap in final screenshots and confirm Cavan has given permission for the case study.
 - **Privacy policy** (`src/pages/privacy.astro`): a plain-English draft that matches what the site does. Have it checked before you rely on it.
 
 Copy and prices live in `src/data/content.ts`.
 
-## Swapping in the Keep Calm & Beer It screenshots
+## Look and feel
 
-The case study has three slots. Drop image files into `src/assets/case-study/` with exactly these names (png, jpg, webp or avif):
+Beermat Studio is a sibling of the Keep Calm & Beer It site, using its "Taproom" design tokens:
 
-| File name | Slot |
+- **Colour:** near-black `#0B0907`, surfaces `#16120E` and `#211B15`, warm ink `#F0E8D8`, gold `#C8902F` for accents. Tokens are at the top of `src/styles/global.css`. The cream "paper" tone appears only inside the form and website mock-ups.
+- **Type:** Oswald (uppercase headings), Montserrat (tracked labels and buttons), Source Serif 4 (body). All self-hosted Latin subsets in `public/fonts/`. Only Oswald 700 and Source Serif 400 are preloaded.
+- **Details:** square corners, 2px-radius buttons, a gold hairline section label, one gold button per view, and a dark scrim only where text sits on a photo.
+- **Festoon glow:** the Keep Calm site dropped its festoon-light graphics, so here they are only a few soft, slowly pulsing bulbs in `Glow.astro` over the hero and final photo. Delete `<Glow />` from `Hero.astro` and `Enquiry.astro` to remove them.
+- **Motion:** a slow zoom on the hero photo, a gentle fade-up on the hero text and the bulb glow. All of it stops under `prefers-reduced-motion`.
+
+## Images
+
+Photos live in `src/assets/images/` and go through Astro's image pipeline (AVIF and WebP, `srcset`, width and height, lazy loading, hero preloaded). They are in `src/assets/` rather than `public/images/` so that processing works. Swap a photo by replacing the file with the same name (JPG, 2000px or wider, 3:2 landscape is ideal).
+
+The photos currently there are **stand-ins** from the images supplied with the brief (I could not source Unsplash or Pexels shots in this environment). Check commercial use before launch, and note that `quiz-night.jpg` has a beer brand visible. Replace them with real pub photography, then record any credits here.
+
+| File | Where it is used | Suggested shot |
+| --- | --- | --- |
+| `hero-bar.jpg` | Full-screen hero | Warm bar interior or a pint being poured. Leave the left half calm and dark for the headline. |
+| `quiz-night.jpg` | Problem split (left half on desktop) | A busy quiz night: tables, pens, answer sheets, people laughing. |
+| `sunday-roast.jpg` | Tile 2 (menu), tile 7 | A Sunday roast on a pub table, shot from above. |
+| `behind-the-bar.jpg` | Tile 3 (book a table) | A landlord or bar staff behind the bar, pulling a pint. |
+| `live-music.jpg` | Tile 4 (hours and map) | A band or solo act in warm stage light, crowd in the foreground. |
+| `beer-garden.jpg` | Tile 6 and the final call-to-action (shown mirrored) | A beer garden at dusk with festoon lights and people. Keep the left third calm. |
+
+The "what's included" tiles are listed in `includes` in `src/data/content.ts`. Each has an `image` (file name without extension), `alt` text and a `position` (the focal point). To give every tile its own photo, add files such as `menu-board.jpg`, `table-booking.jpg` and `pub-exterior.jpg` and point the tiles at them. Every photo needs descriptive alt text.
+
+## Keep Calm & Beer It case study
+
+The two device frames use screenshots taken from the Keep Calm & Beer It repo's `review/` folder (cropped to the top of the home page). Replace them with fresh, launch-quality shots by overwriting these files (png, jpg, webp or avif):
+
+| File in `src/assets/case-study/` | Slot |
 | --- | --- |
-| `desktop-home.png` | Wide desktop screenshot |
-| `mobile-home.png` | Phone screenshot |
-| `mobile-events.png` | Phone screenshot |
+| `desktop-home.png` | Desktop frame, about 1440 x 900 |
+| `mobile-home.png` | Phone frame, about 780 x 1330 (2x) is ideal |
 
-Astro resizes them to AVIF/WebP with explicit width and height, so there is no layout shift. Use roughly 1400px wide for the desktop shot and 600px wide for phones. Slots with no file show a "Screenshot to come" placeholder. To change the names, count or alt text, edit `caseStudy.slots` in `src/data/content.ts`.
+Slots, file names and alt text are in `caseStudy.slots` in `src/data/content.ts`. Add `caseStudyUrl` in `src/data/site.ts` and a "See the live site" link appears. Get Cavan's permission before launch.
 
 ## How the form and tracking work
 
@@ -76,31 +102,17 @@ Astro resizes them to AVIF/WebP with explicit width and height, so there is no l
 - **After consent**: Meta Pixel `PageView`, GA4 page view. On a successful submit, Pixel `Lead` and GA4 `generate_lead` fire with a shared event ID. Clicks on `tel:`, `mailto:` and "Book a call" links send GA4 `click_call`, `click_email` and `click_book_call`.
 - **Conversions API**: if `META_CAPI_TOKEN` and `PUBLIC_META_PIXEL_ID` are set and the visitor accepted cookies, the function also sends a server-side `Lead` with the same event ID, so Meta can de-duplicate it. Email and phone are SHA-256 hashed first.
 
-## Look and feel
-
-Dark, photo-led. Warm near-black backgrounds, brass and amber accents, pump-clip red for the "Most popular" tag, and the bottle-green beermat as a small illustrated accent in the hero. Colours are tokens at the top of `src/styles/global.css`.
-
-Each big photo header is the `Band` component (`src/components/Band.astro`): an image with a dark gradient and the text laid over it. The photos live in `src/assets/photos/` and are used like this:
-
-| Photo | Where |
-| --- | --- |
-| `pint-pour.jpg` | Hero (loaded eagerly, high priority) and the social card |
-| `beer-macro.jpg` | "Most pub websites are out of date" header |
-| `garden-pint.jpg` | "What every pub website includes" header |
-| `pints-table.jpg` | Case study header (a Birra Moretti glass is partly visible, so swap it if that matters) |
-
-To change a header photo, replace the file or change the import and `position` (the focal point, as a CSS `object-position`) where `<Band>` is used. Check you have the right to use the photos commercially.
-
 ## Brand images
 
 `public/og.png` (social card) and `public/apple-touch-icon.png` are generated from `scripts/brand/*.html`. To regenerate after a change, install Playwright and run `node scripts/brand/make-brand-images.mjs`. `public/favicon.svg` is the mat.
 
 ## Lighthouse
 
-Mobile, Lighthouse 13 default settings (simulated slow 4G), against the production build served locally with gzip and the same cache headers. Four runs, no tracking IDs set:
+Mobile, Lighthouse 13 default settings (simulated slow 4G), against the production build served locally with gzip and the same cache headers.
 
-| Performance | Accessibility | Best practices | SEO | LCP | CLS | TBT |
-| --- | --- | --- | --- | --- | --- | --- |
-| 100 | 100 | 100 | 100 | 1.3 s | 0 | 20 to 50 ms |
+| Build | Performance | Accessibility | Best practices | SEO | LCP | CLS | TBT |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| No tracking IDs (3 runs) | 100 | 100 | 100 | 100 | 0.6 s | 0 | 40 to 50 ms |
+| Cookie banner showing (3 runs) | 99, 100, 99 | 100 | 100 | 100 | 0.6 s | 0 | 50 to 140 ms |
 
 Re-run it on the deployed URL once it is live.

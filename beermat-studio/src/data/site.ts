@@ -15,6 +15,9 @@ export const site = {
   // TODO: trading entity for the footer, e.g. 'Beermat Studio is a trading name of Example Ltd (company no. 00000000).'
   legalLine: '',
 
+  // TODO: add the live Keep Calm & Beer It address once it has launched. While empty, the "See the live site" link is hidden.
+  caseStudyUrl: '',
+
   founder: 'Rob Haggan',
   town: 'Warwick',
 

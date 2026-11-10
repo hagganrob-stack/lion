@@ -1,21 +1,24 @@
 ---
-import Band from './Band.astro';
-import garden from '../assets/photos/garden-pint.jpg';
+import Photo from './Photo.astro';
 import { includes } from '../data/content';
 ---
-<Band image={garden} alt="" position="50% 35%" labelledby="inc-title" id="included">
-  <div class="wrap band-copy">
-    <h2 id="inc-title">What every pub website includes</h2>
-    <p class="intro">Whichever plan you choose, you get the things pub customers actually look for.</p>
-  </div>
-</Band>
-<section class="section section-board" aria-label="Included features">
-  <div class="wrap">
-    <ul class="ticks">
-      {includes.map((item) => (
-        <li>
-          <h3>{item.title}</h3>
-          <p>{item.text}</p>
+<section class="section" id="included" aria-labelledby="inc-title">
+  <div class="container">
+    <h2 id="inc-title" class="h2 max-heading">What every pub website includes</h2>
+    <ul class="tiles">
+      {includes.map((item, i) => (
+        <li class={`tile tile-${i + 1}`}>
+          <Photo
+            name={item.image}
+            alt={item.alt}
+            position={item.position}
+            sizes={i === 0 ? '(min-width: 60rem) 50vw, 100vw' : '(min-width: 60rem) 25vw, 100vw'}
+          />
+          <div class="tile-scrim" aria-hidden="true"></div>
+          <div class="tile-text">
+            <h3 class="h3">{item.title}</h3>
+            <p>{item.text}</p>
+          </div>
         </li>
       ))}
     </ul>

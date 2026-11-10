@@ -1,32 +1,25 @@
 ---
-import Band from './Band.astro';
-import macro from '../assets/photos/beer-macro.jpg';
+import Photo from './Photo.astro';
 import { problemChecks } from '../data/content';
 ---
-<Band image={macro} position="50% 40%" labelledby="problem-title" id="problem">
-  <div class="wrap band-copy">
-    <h2 id="problem-title">Most pub websites are out of date</h2>
-    <p class="intro">
-      You know the ones. The events page still lists last Christmas. The menu is a PDF from two summers ago.
-      Someone has to ring up just to find out if you’re open.
-    </p>
+<section class="section split" id="problem" aria-labelledby="problem-title">
+  <div class="split-media">
+    <Photo
+      name="quiz-night"
+      alt="A group of friends clinking pint glasses together across a pub table."
+      sizes="(min-width: 60rem) 50vw, 100vw"
+    />
   </div>
-</Band>
-<section class="section section-board" aria-label="What people check before visiting">
-  <div class="wrap problem-grid">
-    <div class="prose">
-      <p class="problem-close">
-        If they can’t find the answers quickly, they pick the pub that makes it easy.
-      </p>
-      <p>
-        Good pub web design isn’t clever tricks. It’s a handful of answers being right, every single day.
-      </p>
-    </div>
-    <div class="chalkboard">
-      <p class="chalk-title">Before they visit, people check:</p>
-      <ul class="chalk-list">
-        {problemChecks.map((item) => <li>{item}</li>)}
-      </ul>
-    </div>
+  <div class="split-copy">
+    <h2 id="problem-title" class="h2">Most pub websites still show last summer’s quiz.</h2>
+    <p class="intro">
+      Before they visit, people check what’s on tonight, the food menu, opening hours and how to book.
+    </p>
+    <ul class="check-list" aria-label="What people check before they visit">
+      {problemChecks.map((item) => <li>{item}</li>)}
+    </ul>
+    <p>
+      A stale site sends them to the pub down the road. Good pub web design keeps those answers right, every day.
+    </p>
   </div>
 </section>

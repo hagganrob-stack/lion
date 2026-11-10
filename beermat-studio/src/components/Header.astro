@@ -1,17 +1,19 @@
 ---
 import MatLogo from './MatLogo.astro';
 import { bookHref, bookIsExternal } from '../data/site';
+interface Props { solid?: boolean }
+const { solid = false } = Astro.props;
 ---
-<header class="site-header">
-  <div class="wrap header-row">
+<header class:list={['site-header', solid && 'is-solid']}>
+  <div class="container header-row">
     <a class="brand" href="/" aria-label="Beermat Studio, home">
-      <MatLogo size={30} />
+      <MatLogo size={44} />
       <span>Beermat Studio</span>
     </a>
     <nav class="header-nav" aria-label="Main">
-      <a class="nav-link" href="#prices">Prices</a>
+      <a class="nav-link" href="/#prices">Prices</a>
       <a
-        class="btn btn-brass btn-small"
+        class="btn btn-gold-outline btn-small"
         href={bookHref}
         data-book
         target={bookIsExternal ? '_blank' : undefined}

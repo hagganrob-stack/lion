@@ -5,6 +5,15 @@ const PIXEL_ID = body.dataset.metaPixel || '';
 const GA4_ID = body.dataset.ga4 || '';
 const CONSENT_KEY = 'bm_consent';
 
+/* ---------- Header: transparent over the hero, solid once scrolled ---------- */
+
+const header = document.querySelector('.site-header');
+if (header && !header.classList.contains('is-solid')) {
+  const update = () => header.classList.toggle('is-scrolled', window.scrollY > 24);
+  update();
+  window.addEventListener('scroll', update, { passive: true });
+}
+
 /* ---------- Consent and tracking ---------- */
 
 function getConsent() {

@@ -1,29 +1,36 @@
 ---
-import Band from './Band.astro';
-import HeroMat from './HeroMat.astro';
-import pour from '../assets/photos/pint-pour.jpg';
+import Photo from './Photo.astro';
+import Glow from './Glow.astro';
 import { bookHref, bookIsExternal } from '../data/site';
 ---
-<Band image={pour} alt="A pint being poured from the tap on a pub bar." priority tall position="55% 40%" labelledby="hero-title">
-  <div class="wrap hero-grid">
-    <div class="hero-copy">
-      <h1 id="hero-title">Websites for pubs that keep up with what’s on.</h1>
-      <p class="lede">
-        Add quiz nights, live music and food nights from your phone using a simple Google Form,
-        and they show on your website straight away. No logins, no website editor.
-      </p>
-      <div class="btn-row">
-        <a class="btn btn-outline" href="#prices">See prices</a>
-        <a
-          class="btn btn-brass"
-          href={bookHref}
-          data-book
-          target={bookIsExternal ? '_blank' : undefined}
-          rel={bookIsExternal ? 'noopener' : undefined}
-        >Book a 15-minute call</a>
-      </div>
-      <p class="small-line">Pay monthly from £39.</p>
-    </div>
-    <HeroMat />
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-media">
+    <Photo
+      name="hero-bar"
+      alt="A pint being poured from the tap behind a pub bar, in warm bar light."
+      priority
+      sizes="100vw"
+      position="62% 40%"
+    />
   </div>
-</Band>
+  <div class="hero-scrim" aria-hidden="true"></div>
+  <Glow />
+  <div class="container hero-content">
+    <h1 id="hero-title" class="display">Websites for pubs that keep up with what’s on.</h1>
+    <p class="intro">
+      Add quiz nights, live music and food nights from your phone, and they’re on your website in seconds.
+      No logins, no website editor.
+    </p>
+    <div class="btn-row">
+      <a
+        class="btn btn-gold"
+        href={bookHref}
+        data-book
+        target={bookIsExternal ? '_blank' : undefined}
+        rel={bookIsExternal ? 'noopener' : undefined}
+      >Book a 15-minute call</a>
+      <a class="btn btn-ghost" href="#prices">See prices</a>
+    </div>
+    <p class="hero-small">Pay monthly from £39.</p>
+  </div>
+</section>

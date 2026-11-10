@@ -1,0 +1,11 @@
+---
+// Soft warm bulbs, like festoon lights out of focus. CSS only; they pulse gently and stop for reduced motion.
+const bulbs = [
+  { x: 6, y: 17, d: 0 }, { x: 17, y: 11, d: 1.1 }, { x: 29, y: 15, d: 0.5 },
+  { x: 41, y: 9, d: 1.7 }, { x: 53, y: 14, d: 0.9 }, { x: 65, y: 8, d: 2.1 },
+  { x: 77, y: 13, d: 0.3 }, { x: 89, y: 9, d: 1.4 },
+];
+---
+<div class="glow" aria-hidden="true">
+  {bulbs.map((b) => <span style={`left:${b.x}%;top:${b.y}%;animation-delay:${b.d}s`}></span>)}
+</div>

@@ -1,0 +1,10 @@
+---
+// Gold hairline, label, gold hairline: the section divider from the Keep Calm & Beer It site.
+interface Props { label: string }
+const { label } = Astro.props;
+---
+<div class="section-label">
+  <span aria-hidden="true"></span>
+  <p>{label}</p>
+  <span aria-hidden="true"></span>
+</div>

@@ -1,25 +1,19 @@
 <!doctype html>
 <html><head><meta charset="utf-8">
 <style>
-@font-face{font-family:'Young Serif';src:url('young-serif-latin.woff2') format('woff2');}
+@font-face{font-family:'Oswald';font-weight:700;src:url('oswald-700.woff2') format('woff2');}
+@font-face{font-family:'Montserrat';font-weight:600;src:url('montserrat-600.woff2') format('woff2');}
+@font-face{font-family:'Source Serif 4';src:url('source-serif-4-400.woff2') format('woff2');}
 *{box-sizing:border-box}
-body{margin:0;width:1200px;height:630px;background:#0a0806;font-family:'Young Serif',Georgia,serif;color:#f6f3ea;position:relative;overflow:hidden}
-.bar{position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,8,6,.88),rgba(10,8,6,.35)),url('pint-pour.jpg') center/cover;}
-.rail{position:absolute;left:0;right:0;top:0;height:10px;background:#c9a54e}
-.copy{position:absolute;left:80px;top:150px;width:560px}
-.name{font-size:30px;color:#e4c987;margin:0 0 22px}
-h1{font-size:76px;line-height:1.03;margin:0;font-weight:400}
-.sub{font-family:system-ui,sans-serif;font-size:28px;margin:26px 0 0;color:#d3dad0}
-.mat{position:absolute;right:60px;top:80px;width:470px;height:470px;transform:rotate(-7deg)}
-.shadow{position:absolute;right:48px;top:100px;width:470px;height:470px;border-radius:50%;background:rgba(0,0,0,.45);filter:blur(14px)}
+body{margin:0;width:1200px;height:630px;background:#0b0907;color:#f0e8d8;position:relative;overflow:hidden}
+.bg{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(11,9,7,.7)),linear-gradient(90deg,rgba(0,0,0,.55),rgba(0,0,0,0)),url('hero-bar.jpg') 62% 40%/cover}
+.brand{position:absolute;left:72px;top:56px;display:flex;align-items:center;gap:18px;font-family:Oswald;font-weight:700;font-size:34px;letter-spacing:.06em;text-transform:uppercase}
+h1{position:absolute;left:72px;top:140px;margin:0;width:820px;font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:92px;line-height:.98}
+.small{position:absolute;left:72px;bottom:56px;font-family:Montserrat;font-weight:600;font-size:22px;letter-spacing:.14em;text-transform:uppercase;color:#c8902f}
+.rule{position:absolute;left:72px;right:72px;bottom:110px;height:1px;background:#c8902f}
 </style></head><body>
-<div class="bar"></div><div class="rail"></div>
-<div class="copy"><p class="name">Beermat Studio</p><h1>Websites for pubs that keep up with what’s on.</h1><p class="sub">Pay monthly from £39.</p></div>
-<div class="shadow"></div>
-<svg class="mat" viewBox="0 0 400 400"><circle cx="200" cy="205" r="196" fill="#c9c2a8"/><circle cx="200" cy="200" r="196" fill="#f6f3ea"/><circle cx="200" cy="200" r="168" fill="none" stroke="#14372a" stroke-width="38"/><circle cx="200" cy="200" r="147" fill="none" stroke="#c9a54e" stroke-width="2"/><circle cx="200" cy="200" r="188.5" fill="none" stroke="#c9a54e" stroke-width="1.5"/>
-<defs><path id="r" d="M 39,200 A 161,161 0 1,1 361,200 A 161,161 0 1,1 39,200"/></defs>
-<text fill="#e4c987" font-size="17" font-family="Young Serif"><textPath href="#r" textLength="1010" lengthAdjust="spacing">Beermat Studio · Websites for pubs · Beermat Studio · Websites for pubs ·&#160;</textPath></text>
-<text x="200" y="146" text-anchor="middle" font-family="Young Serif" font-size="38" fill="#1c1f1b">What’s on</text>
-<path d="M150 164h38M212 164h38" stroke="#c9a54e" stroke-width="2"/><path d="M200 158l6 6-6 6-6-6z" fill="#b02a1f"/>
-<g font-size="22" font-family="Young Serif" fill="#1c1f1b"><text x="98" y="212" font-family="system-ui" font-weight="800" font-size="17" fill="#b02a1f">Tue</text><text x="152" y="212">Quiz night 8pm</text><text x="98" y="252" font-family="system-ui" font-weight="800" font-size="17" fill="#b02a1f">Fri</text><text x="152" y="252">Live music</text><text x="98" y="292" font-family="system-ui" font-weight="800" font-size="17" fill="#b02a1f">Sun</text><text x="152" y="292">Roast till 5</text></g></svg>
+<div class="bg"></div>
+<div class="brand"><svg width="64" height="64" viewBox="0 0 48 48"><circle cx="24" cy="24" r="22.5" fill="#000" stroke="#C8902F" stroke-width="1.5"/><circle cx="24" cy="24" r="18" fill="none" stroke="#C8902F" stroke-width=".8"/><circle cx="24" cy="24" r="12.5" fill="#F0E8D8"/><circle cx="24" cy="24" r="8.5" fill="none" stroke="#0B0907" stroke-width="2"/><circle cx="24" cy="24" r="3.4" fill="#C8902F"/></svg>Beermat Studio</div>
+<h1>Websites for pubs that keep up with what’s on.</h1>
+<div class="rule"></div><div class="small">Pay monthly from £39</div>
 </body></html>

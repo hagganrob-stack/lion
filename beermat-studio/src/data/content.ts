@@ -40,31 +40,52 @@ export const problemChecks = [
 export const includes = [
   {
     title: 'A what’s on calendar',
-    text: 'Add events with a simple Google Form on your phone. They show on your site straight away and drop off once they have passed.',
+    text: 'Add events from your phone. They’re on your site in seconds.',
+    image: 'quiz-night',
+    alt: 'Friends clinking pint glasses together across a pub table.',
+    position: '50% 50%',
   },
   {
-    title: 'A menu you can edit',
-    text: 'Change dishes and prices when your menu changes, without waiting for a web designer.',
+    title: 'A menu you can change',
+    text: 'New dish, new price, new pint? Update it yourself.',
+    image: 'sunday-roast',
+    alt: 'Four pints of beer and cider on a wooden pub table.',
+    position: '50% 40%',
   },
   {
-    title: 'A book-a-table link',
-    text: 'A clear button that takes people to your own booking link, so no one has to ring to ask.',
+    title: 'Book a table',
+    text: 'One clear button to your booking link. No more phone calls to ask.',
+    image: 'behind-the-bar',
+    alt: 'Close-up of a cold pint of lager with condensation on the glass.',
+    position: '50% 50%',
   },
   {
     title: 'Opening hours and a map',
-    text: 'Hours, address and a map people can tap for directions, with a note on parking if you want one.',
+    text: 'Hours, address and directions people can tap.',
+    image: 'live-music',
+    alt: 'A pint with a thick creamy head of foam.',
+    position: '50% 30%',
   },
   {
-    title: 'Google Business Profile set up properly',
+    title: 'Google Business Profile, set up properly',
     text: 'So you show up the right way on Google Maps and in search.',
+    image: 'hero-bar',
+    alt: 'A pint being poured from the tap behind a pub bar.',
+    position: '50% 35%',
   },
   {
     title: 'Fast on a pub-garden 4G signal',
-    text: 'Built light, so it loads quickly on a phone even when the signal in the beer garden is patchy.',
+    text: 'Built light, so it loads even when the signal is patchy out the back.',
+    image: 'beer-garden',
+    alt: 'A glass of beer on a table in a pub garden at dusk, with festoon lights and people chatting.',
+    position: '30% 50%',
   },
   {
-    title: 'Built for local search',
-    text: 'Set up so people searching for a “pub near me” or your town can find you.',
+    title: 'Built for “pub near me” searches',
+    text: 'Set up so locals searching for a pub find yours first.',
+    image: 'sunday-roast',
+    alt: 'Pints of beer and cider lined up on a wooden pub table.',
+    position: '15% 80%',
   },
 ];
 
@@ -133,12 +154,11 @@ export const caseStudy = {
   name: 'Keep Calm & Beer It',
   pubs: ['The Builders Arms', 'The Hope Tavern', 'The Bowling Green'],
   /**
-   * Screenshot slots. Drop a file with the matching name into src/assets/case-study/
-   * (png, jpg, webp or avif) and it appears on the page. See README.
+   * Screenshot slots. Replace the files in src/assets/case-study/ (same names, png, jpg, webp or avif)
+   * and they update. See README.
    */
   slots: [
-    { file: 'desktop-home', kind: 'desktop', alt: 'The Keep Calm & Beer It website on a desktop screen.' },
+    { file: 'desktop-home', kind: 'desktop', alt: 'The Keep Calm & Beer It home page on a desktop screen, showing the three pubs.' },
     { file: 'mobile-home', kind: 'mobile', alt: 'The Keep Calm & Beer It home page on a phone.' },
-    { file: 'mobile-events', kind: 'mobile', alt: 'A pub events page from the Keep Calm & Beer It website on a phone.' },
   ],
 };

@@ -5,7 +5,6 @@ import Footer from '../components/Footer.astro';
 import ConsentBanner from '../components/ConsentBanner.astro';
 import { site, hasTracking } from '../data/site';
 import { faqs } from '../data/content';
-const fontUrl = '/fonts/young-serif-latin.woff2';
 
 interface Props {
   title: string;
@@ -13,8 +12,9 @@ interface Props {
   path?: string;
   noindex?: boolean;
   schema?: boolean;
+  solidHeader?: boolean;
 }
-const { title, description, path = '/', noindex = false, schema = false } = Astro.props;
+const { title, description, path = '/', noindex = false, schema = false, solidHeader = false } = Astro.props;
 const canonical = new URL(path, site.url).href;
 const ogImage = `${site.url}/og.png`;
 
@@ -53,7 +53,7 @@ const faqPage = {
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     {noindex && <meta name="robots" content="noindex, follow" />}
-    <meta name="theme-color" content="#0a0806" />
+    <meta name="theme-color" content="#0b0907" />
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -73,14 +73,17 @@ const faqPage = {
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
-    <link rel="preload" href={fontUrl} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/oswald-700.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/source-serif-4-400.woff2" as="font" type="font/woff2" crossorigin />
+    <slot name="head" />
+    <script is:inline>document.documentElement.classList.add("js")</script>
 
     {schema && <script type="application/ld+json" set:html={JSON.stringify(professionalService)} />}
     {schema && <script type="application/ld+json" set:html={JSON.stringify(faqPage)} />}
   </head>
   <body data-meta-pixel={site.metaPixelId} data-ga4={site.ga4Id}>
     <a class="skip-link" href="#main">Skip to the content</a>
-    <Header />
+    <Header solid={solidHeader} />
     <main id="main">
       <slot />
     </main>

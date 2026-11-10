@@ -1,20 +1,18 @@
 ---
+import SectionLabel from './SectionLabel.astro';
 import { tiers } from '../data/content';
 ---
-<section class="section section-board" id="prices" aria-labelledby="prices-title">
-  <div class="wrap">
-    <div class="prose">
-      <h2 id="prices-title">Pub website design prices</h2>
-      <p class="intro">
-        Pick a plan and pay monthly, or pay once on the two bigger plans.
-      </p>
-    </div>
+<section class="section" id="prices" aria-labelledby="prices-title">
+  <div class="container">
+    <SectionLabel label="Prices" />
+    <h2 id="prices-title" class="h2 max-heading">Pub website design prices</h2>
+    <p class="intro">Pick a plan and pay monthly, or pay once on the two bigger plans.</p>
 
     <div class="tiers">
       {tiers.map((t) => (
         <article class={`tier${t.featured ? ' tier-featured' : ''}`} aria-labelledby={`tier-${t.id}`}>
           {t.featured && <p class="clip">Most popular</p>}
-          <h3 id={`tier-${t.id}`}>{t.name}</h3>
+          <h3 id={`tier-${t.id}`} class="h3">{t.name}</h3>
           <p class="tier-blurb">{t.blurb}</p>
           <p class="price">
             <span class="price-big">{t.upfront}</span>
@@ -30,7 +28,7 @@ import { tiers } from '../data/content';
           <ul class="tier-list">
             {t.features.map((f) => <li>{f}</li>)}
           </ul>
-          <a class={`btn ${t.featured ? 'btn-brass' : 'btn-red'}`} href="#enquire" data-plan={t.name}>
+          <a class={`btn ${t.featured ? 'btn-gold' : 'btn-ghost'}`} href="#enquire" data-plan={t.name}>
             Ask about {t.name}
           </a>
         </article>

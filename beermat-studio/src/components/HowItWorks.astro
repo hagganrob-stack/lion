@@ -1,21 +1,25 @@
 ---
+import SectionLabel from './SectionLabel.astro';
 const events = [
   { day: 'Tue', date: '17', name: 'Quiz night', meta: '8pm', note: 'Teams of up to six. Bring a pen.' },
   { day: 'Fri', date: '20', name: 'Live music', meta: '9pm', note: 'Local band on stage.' },
   { day: 'Sun', date: '22', name: 'Sunday roast', meta: 'Till 5pm', note: 'Booking advised.' },
 ];
 ---
-<section class="section section-tint" id="how-it-works" aria-labelledby="how-title">
-  <div class="wrap how-grid">
+<section class="section section-raised" id="how-it-works" aria-labelledby="how-title">
+  <div class="container">
+    <SectionLabel label="How it works" />
+  </div>
+  <div class="container how-grid">
     <div class="how-copy">
-      <h2 id="how-title">How the events calendar works</h2>
+      <h2 id="how-title" class="h2">How the events calendar works</h2>
       <p class="intro">
         It’s a Google Form. If you can fill in a form on your phone, you can keep your what’s on up to date.
       </p>
       <ol class="steps">
         <li>
           <h3>Open the form on your phone</h3>
-          <p>Save it to your home screen. It’s a normal Google Form, so there’s nothing new to learn.</p>
+          <p>Save it to your home screen. It’s a simple Google Form, so there’s nothing new to learn.</p>
         </li>
         <li>
           <h3>Add the details</h3>
@@ -23,7 +27,7 @@ const events = [
         </li>
         <li>
           <h3>It appears on your site</h3>
-          <p>Straight away. Past events drop off automatically, so nobody has to tidy up.</p>
+          <p>In seconds. Past events drop off automatically, so nobody has to tidy up.</p>
         </li>
       </ol>
     </div>
@@ -72,7 +76,7 @@ const events = [
           </ul>
         </div>
       </div>
-      <p class="mock-caption">An example. Your own pub’s name, your own events.</p>
+      <p class="mock-caption">An example. Your pub’s name, your events.</p>
     </div>
   </div>
 </section>
