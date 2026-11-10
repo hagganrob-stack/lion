@@ -15,22 +15,40 @@ import { bookHref, bookIsExternal } from '../data/site';
   </div>
   <div class="hero-scrim" aria-hidden="true"></div>
   <Glow />
-  <div class="container hero-content">
-    <h1 id="hero-title" class="display">Websites for pubs that keep up with what’s on.</h1>
-    <p class="intro">
-      Add quiz nights, live music and food nights from your phone, and they’re on your website in seconds.
-      No logins, no website editor.
-    </p>
-    <div class="btn-row">
-      <a
-        class="btn btn-gold"
-        href={bookHref}
-        data-book
-        target={bookIsExternal ? '_blank' : undefined}
-        rel={bookIsExternal ? 'noopener' : undefined}
-      >Book a 15-minute call</a>
-      <a class="btn btn-ghost" href="#prices">See prices</a>
+  <div class="container hero-grid">
+    <div class="hero-content">
+      <h1 id="hero-title" class="display">Websites for pubs that keep up with what’s on.</h1>
+      <p class="intro">
+        Add quiz nights, live music and food nights from your phone, and they’re on your website in seconds.
+        No logins, no website editor.
+      </p>
+      <div class="btn-row">
+        <a
+          class="btn btn-gold"
+          href={bookHref}
+          data-book
+          target={bookIsExternal ? '_blank' : undefined}
+          rel={bookIsExternal ? 'noopener' : undefined}
+        >Book a 15-minute call</a>
+        <a class="btn btn-ghost" href="#prices">See prices</a>
+      </div>
+      <p class="hero-small">Pay monthly from £39.</p>
     </div>
-    <p class="hero-small">Pay monthly from £39.</p>
+
+    <div class="hero-phone-wrap" aria-hidden="true">
+      <div class="hero-phone">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <p class="hp-brand">Your pub</p>
+          <p class="hp-title">What’s on</p>
+          <ul class="hp-list">
+            <li class="hp-new"><span class="hp-chip">Just added</span><b>Thu</b><span>Curry night<small>7pm</small></span></li>
+            <li><b>Tue</b><span>Quiz night<small>8pm</small></span></li>
+            <li><b>Fri</b><span>Live music<small>9pm</small></span></li>
+            <li><b>Sun</b><span>Sunday roast<small>Till 5pm</small></span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </section>

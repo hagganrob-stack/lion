@@ -1,0 +1,13 @@
+---
+// A slow-moving band of the things pubs put on. Decorative; CSS only; static under reduced motion.
+const items = ['Quiz night', 'Live music', 'Sunday roast', 'Karaoke', 'Big game on the big screen', 'Open mic', 'Curry night', 'Meat raffle', 'Beer garden open'];
+---
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    {[0, 1].map(() => (
+      <ul>
+        {items.map((t, i) => <li class={i % 2 ? 'alt' : ''}>{t}</li>)}
+      </ul>
+    ))}
+  </div>
+</div>

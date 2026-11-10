@@ -1,10 +1,5 @@
 ---
 import SectionLabel from './SectionLabel.astro';
-const events = [
-  { day: 'Tue', date: '17', name: 'Quiz night', meta: '8pm', note: 'Teams of up to six. Bring a pen.' },
-  { day: 'Fri', date: '20', name: 'Live music', meta: '9pm', note: 'Local band on stage.' },
-  { day: 'Sun', date: '22', name: 'Sunday roast', meta: 'Till 5pm', note: 'Booking advised.' },
-];
 ---
 <section class="section section-raised" id="how-it-works" aria-labelledby="how-title">
   <div class="container">
@@ -32,51 +27,54 @@ const events = [
       </ol>
     </div>
 
-    <div class="mocks" role="group" aria-label="Example: the form on a phone, and the events list it creates on the website">
+    <div class="mocks demo" role="group" aria-label="Try it: add an event and watch it appear on the pub website">
       <div class="phone">
         <div class="phone-notch" aria-hidden="true"></div>
-        <div class="phone-screen">
+        <form class="phone-screen" id="demo-form" novalidate>
           <p class="form-head">Add an event</p>
-          <div class="field-mock">
+          <label class="field-mock">
             <span class="field-label">Event name</span>
-            <span class="field-value">Quiz night</span>
-          </div>
+            <input class="field-input" name="name" type="text" value="Curry night" maxlength="40" autocomplete="off" required />
+          </label>
           <div class="field-mock two">
-            <div>
+            <label>
               <span class="field-label">Date</span>
-              <span class="field-value">Tue 17 Nov</span>
-            </div>
-            <div>
+              <input class="field-input" name="date" type="date" required />
+            </label>
+            <label>
               <span class="field-label">Time</span>
-              <span class="field-value">8pm</span>
-            </div>
+              <input class="field-input" name="time" type="time" value="19:00" required />
+            </label>
           </div>
-          <div class="field-mock">
+          <label class="field-mock">
             <span class="field-label">A line about it</span>
-            <span class="field-value">Teams of up to six. Bring a pen.</span>
-          </div>
-          <span class="submit-mock">Submit</span>
-        </div>
+            <input class="field-input" name="about" type="text" value="Two curries and a pint." maxlength="60" autocomplete="off" />
+          </label>
+          <button class="submit-mock" type="submit">Add event</button>
+        </form>
       </div>
 
       <div class="site-mock">
         <div class="site-mock-bar" aria-hidden="true"><i></i><i></i><i></i></div>
         <div class="site-mock-body">
           <p class="site-mock-title">What’s on at your pub</p>
-          <ul class="event-list">
-            {events.map((e) => (
-              <li>
-                <span class="date-chip" aria-hidden="true"><b>{e.date}</b>{e.day}</span>
-                <span class="event-text">
-                  <strong>{e.name}</strong>
-                  <span>{e.meta}. {e.note}</span>
-                </span>
-              </li>
-            ))}
+          <ul class="event-list" id="demo-list" aria-live="polite">
+            <li>
+              <span class="date-chip" aria-hidden="true"><b>17</b>Tue</span>
+              <span class="event-text"><strong>Quiz night</strong><span>8pm. Teams of up to six. Bring a pen.</span></span>
+            </li>
+            <li>
+              <span class="date-chip" aria-hidden="true"><b>20</b>Fri</span>
+              <span class="event-text"><strong>Live music</strong><span>9pm. Local band on stage.</span></span>
+            </li>
+            <li>
+              <span class="date-chip" aria-hidden="true"><b>22</b>Sun</span>
+              <span class="event-text"><strong>Sunday roast</strong><span>Till 5pm. Booking advised.</span></span>
+            </li>
           </ul>
         </div>
       </div>
-      <p class="mock-caption">An example. Your pub’s name, your events.</p>
+      <p class="mock-caption" id="demo-status">Have a go. This is a demo, nothing is saved.</p>
     </div>
   </div>
 </section>

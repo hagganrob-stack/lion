@@ -208,3 +208,93 @@ if (form) {
     }
   });
 }
+
+/* ---------- Live demo: add an event, see it on the pub site ---------- */
+
+const demoForm = document.getElementById('demo-form');
+const demoList = document.getElementById('demo-list');
+if (demoForm && demoList) {
+  const status = document.getElementById('demo-status');
+  const startOfDay = (d) => { const x = new Date(d); x.setHours(0, 0, 0, 0); return x; };
+  const today = startOfDay(new Date());
+  const nextDow = (dow) => { const d = new Date(today); d.setDate(d.getDate() + (((dow - d.getDay()) + 7) % 7 || 7)); return d; };
+  const timeLabel = (t) => {
+    const [h, m] = t.split(':').map(Number);
+    const hh = h % 12 || 12;
+    return `${hh}${m ? ':' + String(m).padStart(2, '0') : ''}${h >= 12 ? 'pm' : 'am'}`;
+  };
+  const fmt = (d, o) => d.toLocaleDateString('en-GB', o);
+  const MAX = 5;
+
+  const make = (ev, cls) => {
+    const li = document.createElement('li');
+    if (cls) li.className = cls;
+    li.dataset.ts = String(ev.date.getTime());
+    const chip = document.createElement('span');
+    chip.className = 'date-chip';
+    chip.setAttribute('aria-hidden', 'true');
+    const b = document.createElement('b');
+    b.textContent = String(ev.date.getDate());
+    chip.append(b, fmt(ev.date, { weekday: 'short' }));
+    const text = document.createElement('span');
+    text.className = 'event-text';
+    const strong = document.createElement('strong');
+    strong.textContent = ev.name;
+    const meta = document.createElement('span');
+    meta.textContent = `${ev.time}.${ev.about ? ' ' + ev.about : ''}`;
+    text.append(strong, meta);
+    li.append(chip, text);
+    return li;
+  };
+
+  // Seed with dates that are always upcoming, plus one event that has just passed.
+  const past = new Date(today); past.setDate(past.getDate() - 1);
+  const seed = [
+    { date: past, name: 'Karaoke night', time: '9pm', about: 'Finished. Drops off by itself.' },
+    { date: nextDow(2), name: 'Quiz night', time: '8pm', about: 'Teams of up to six. Bring a pen.' },
+    { date: nextDow(5), name: 'Live music', time: '9pm', about: 'Local band on stage.' },
+    { date: nextDow(0), name: 'Sunday roast', time: 'Till 5pm', about: 'Booking advised.' },
+  ].sort((a, b) => a.date - b.date);
+  demoList.replaceChildren(...seed.map((ev) => make(ev, ev.date < today ? 'is-past' : '')));
+
+  // Default the form to the next Thursday, and stop dates in the past.
+  const dateInput = demoForm.elements.namedItem('date');
+  const iso = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  dateInput.value = iso(nextDow(4));
+  dateInput.min = iso(today);
+
+  // When the list scrolls into view, the past event drops off on its own.
+  const pastItem = demoList.querySelector('.is-past');
+  if (pastItem && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      if (!entries[0].isIntersecting) return;
+      io.disconnect();
+      setTimeout(() => {
+        pastItem.classList.add('is-gone');
+        setTimeout(() => pastItem.remove(), 700);
+      }, 1600);
+    }, { threshold: 0.6 });
+    io.observe(demoList);
+  } else if (pastItem) pastItem.remove();
+
+  demoForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const f = demoForm.elements;
+    const name = (f.name.value || '').trim();
+    if (!name || !f.date.value || !f.time.value) {
+      status.textContent = 'Add a name, date and time, then press the button.';
+      return;
+    }
+    const [y, m, d] = f.date.value.split('-').map(Number);
+    const ev = { date: new Date(y, m - 1, d), name, time: timeLabel(f.time.value), about: (f.about.value || '').trim() };
+    const li = make(ev, 'is-new');
+    const ts = ev.date.getTime();
+    const before = [...demoList.children].find((c) => Number(c.dataset.ts) > ts);
+    demoList.insertBefore(li, before || null);
+    while (demoList.children.length > MAX) demoList.lastElementChild.remove();
+    status.textContent = `Added. “${name}” is on the website now.`;
+    f.name.value = '';
+    f.about.value = '';
+    f.name.focus();
+  });
+}

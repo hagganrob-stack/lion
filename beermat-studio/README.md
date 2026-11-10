@@ -106,13 +106,20 @@ Slots, file names and alt text are in `caseStudy.slots` in `src/data/content.ts`
 
 `public/og.png` (social card) and `public/apple-touch-icon.png` are generated from `scripts/brand/*.html`. To regenerate after a change, install Playwright and run `node scripts/brand/make-brand-images.mjs`. `public/favicon.svg` is the mat.
 
+## Showpiece features
+
+- **Live demo** (How it works): a working "add an event" form. Visitors add an event and it appears, in date order, on a mock pub site; a just-passed event drops off by itself. Nothing is saved or sent. The code is the last block of `src/scripts/main.js`, the markup is `HowItWorks.astro`.
+- **Hero phone**: a pub site on a phone where a new event pops in. Decorative, CSS only (`Hero.astro`).
+- **Ticker band**: the big scrolling list of events (`Ticker.astro`). Edit the `items` array.
+- **Stale-site mock** (problem section): an out-of-date pub site (`Problem.astro`). It is an illustration, not a real pub.
+- **Scroll reveals and parallax**: CSS scroll-driven animations at the bottom of `global.css`. Browsers without support just show everything. All motion stops under `prefers-reduced-motion`.
+
 ## Lighthouse
 
-Mobile, Lighthouse 13 default settings (simulated slow 4G), against the production build served locally with gzip and the same cache headers.
+Mobile, Lighthouse 13 default settings (simulated slow 4G), against the production build served locally with gzip and the same cache headers. Four runs, no tracking IDs set:
 
-| Build | Performance | Accessibility | Best practices | SEO | LCP | CLS | TBT |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| No tracking IDs (3 runs) | 100 | 100 | 100 | 100 | 0.6 s | 0 | 40 to 50 ms |
-| Cookie banner showing (3 runs) | 99, 100, 99 | 100 | 100 | 100 | 0.6 s | 0 | 50 to 140 ms |
+| Performance | Accessibility | Best practices | SEO | LCP | CLS | TBT |
+| --- | --- | --- | --- | --- | --- | --- |
+| 97 to 99 | 100 | 100 | 100 | 0.8 s | 0 | 100 to 180 ms |
 
 Re-run it on the deployed URL once it is live.
