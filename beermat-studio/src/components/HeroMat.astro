@@ -1,0 +1,40 @@
+---
+// The hero beermat. Inline SVG, so it costs no extra request.
+const ring = 'M 39,200 A 161,161 0 1,1 361,200 A 161,161 0 1,1 39,200';
+---
+<div class="hero-art" aria-hidden="false">
+  <div class="mat-stage">
+    <div class="mat-shadow"></div>
+    <svg
+      class="mat"
+      viewBox="0 0 400 400"
+      width="400"
+      height="400"
+      role="img"
+      aria-label="A beermat listing what’s on: Tuesday quiz at 8pm, Friday live music, Sunday roast till 5."
+    >
+      <circle cx="200" cy="205" r="196" fill="#c9c2a8" />
+      <circle cx="200" cy="200" r="196" fill="#f6f3ea" />
+      <circle cx="200" cy="200" r="168" fill="none" stroke="#14372a" stroke-width="38" />
+      <circle cx="200" cy="200" r="147" fill="none" stroke="#c9a54e" stroke-width="2" />
+      <circle cx="200" cy="200" r="188.5" fill="none" stroke="#c9a54e" stroke-width="1.5" />
+      <defs><path id="mat-ring" d={ring} /></defs>
+      <text class="mat-ring-text" fill="#e4c987" font-size="17">
+        <textPath href="#mat-ring" textLength="1010" lengthAdjust="spacing">Beermat Studio · Websites for pubs · Beermat Studio · Websites for pubs ·&#160;</textPath>
+      </text>
+
+      <text x="200" y="146" text-anchor="middle" class="mat-title" font-size="38" fill="#1c1f1b">What’s on</text>
+      <path d="M150 164 h38 M212 164 h38" stroke="#c9a54e" stroke-width="2" />
+      <path d="M200 158 l6 6 l-6 6 l-6 -6 z" fill="#b02a1f" />
+
+      <g font-size="22">
+        <text x="98" y="212" class="mat-day" fill="#b02a1f">Tue</text>
+        <text x="152" y="212" class="mat-event" fill="#1c1f1b">Quiz night 8pm</text>
+        <text x="98" y="252" class="mat-day" fill="#b02a1f">Fri</text>
+        <text x="152" y="252" class="mat-event" fill="#1c1f1b">Live music</text>
+        <text x="98" y="292" class="mat-day" fill="#b02a1f">Sun</text>
+        <text x="152" y="292" class="mat-event" fill="#1c1f1b">Roast till 5</text>
+      </g>
+    </svg>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+---
+import { Picture } from 'astro:assets';
+import pour from '../assets/photos/pint-pour.jpg';
+import { problemChecks } from '../data/content';
+---
+<section class="section section-board" id="problem" aria-labelledby="problem-title">
+  <div class="wrap problem-grid">
+    <div class="prose">
+      <h2 id="problem-title">Most pub websites are out of date</h2>
+      <p>
+        You know the ones. The events page still lists last Christmas. The menu is a PDF from two summers ago.
+        Someone has to ring up just to find out if you’re open.
+      </p>
+      <p>
+        Good pub web design isn’t clever tricks. It’s a handful of answers being right, every single day.
+      </p>
+    </div>
+
+    <div class="chalkboard">
+      <p class="chalk-title">Before they visit, people check:</p>
+      <ul class="chalk-list">
+        {problemChecks.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+
+    <p class="problem-close">
+      If they can’t find the answers quickly, they pick the pub that makes it easy.
+    </p>
+
+    <div class="photo problem-photo">
+      <Picture
+        src={pour}
+        alt="A pint being poured from a hand pump into a glass behind the bar."
+        formats={['avif', 'webp']}
+        widths={[480, 800, 1200]}
+        sizes="(min-width: 64rem) 70rem, calc(100vw - 2rem)"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+  </div>
+</section>

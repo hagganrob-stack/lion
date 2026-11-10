@@ -1,0 +1,65 @@
+---
+import Base from '../layouts/Base.astro';
+import { site, phoneHref } from '../data/site';
+---
+<Base
+  title="Privacy policy | Beermat Studio"
+  description="How Beermat Studio looks after your details when you use the enquiry form or visit this website."
+  path="/privacy"
+>
+  <section class="section section-board legal">
+    <div class="wrap prose">
+      <h1 class="h1-small">Privacy policy</h1>
+      <p class="intro">
+        Short version: I only use your details to reply to you and to see which ads work. I don’t sell your data.
+      </p>
+
+      <h2>Who I am</h2>
+      <p>
+        Beermat Studio is run by {site.founder} in {site.town}.
+        {site.legalLine && <> {site.legalLine}</>}
+        You can contact me at <a href={`mailto:${site.email}`}>{site.email}</a>{site.phone && <> or on <a href={phoneHref}>{site.phone}</a></>}.
+      </p>
+
+      <h2>The enquiry form</h2>
+      <p>
+        When you send the form I collect your name, pub name, town, phone number, email address and the number of pubs you run.
+        I use them to reply to your enquiry and to talk to you about a website for your pub. My lawful basis is legitimate interests,
+        because you asked me to get in touch.
+      </p>
+      <p>
+        The form also records which ad or link brought you here (the campaign details in the web address), the page you landed on and
+        where you came from. I use this to understand which marketing works.
+      </p>
+      <p>
+        Your enquiry is sent by email using Resend, which processes it on my behalf. I keep enquiries for as long as I need them to
+        deal with your request and for a reasonable period after, and then delete them. You can ask me to delete yours at any time.
+      </p>
+
+      <h2 id="cookies">Cookies and tracking</h2>
+      <p>
+        This site sets no analytics or advertising cookies unless you press “Accept” on the cookie banner.
+        If you accept, I load Google Analytics (GA4) to count visits and clicks, and the Meta Pixel to measure
+        how many people who see my ads send an enquiry. These tools set cookies and may send data to Google and Meta.
+      </p>
+      <p>
+        If you accept, then submit the form, I may also send a Lead event to Meta’s Conversions API.
+        That includes your email address and phone number in a hashed (scrambled) form, so Meta can match the enquiry to an ad.
+        I don’t do this if you decline cookies.
+      </p>
+      <p>
+        You can change your mind at any time using “Cookie settings” in the footer. To remove cookies that are already set,
+        clear this site’s cookies in your browser.
+      </p>
+
+      <h2>Your rights</h2>
+      <p>
+        You can ask to see, correct or delete the personal data I hold about you, and you can object to how I use it.
+        Email me and I’ll deal with it. If you’re unhappy, you can complain to the Information Commissioner’s Office at
+        <a href="https://ico.org.uk" rel="noopener">ico.org.uk</a>.
+      </p>
+
+      <p class="updated">Last updated: November 2026.</p>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,22 @@
+---
+import MatLogo from './MatLogo.astro';
+import { bookHref, bookIsExternal } from '../data/site';
+---
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="/" aria-label="Beermat Studio, home">
+      <MatLogo size={30} />
+      <span>Beermat Studio</span>
+    </a>
+    <nav class="header-nav" aria-label="Main">
+      <a class="nav-link" href="#prices">Prices</a>
+      <a
+        class="btn btn-brass btn-small"
+        href={bookHref}
+        data-book
+        target={bookIsExternal ? '_blank' : undefined}
+        rel={bookIsExternal ? 'noopener' : undefined}
+      >Book a call</a>
+    </nav>
+  </div>
+</header>

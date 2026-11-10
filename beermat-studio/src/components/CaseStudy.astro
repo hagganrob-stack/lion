@@ -1,0 +1,51 @@
+---
+import { Image } from 'astro:assets';
+import { caseStudy } from '../data/content';
+
+// Pick up any screenshots dropped into src/assets/case-study/
+const found = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/case-study/*.{png,jpg,jpeg,webp,avif}',
+  { eager: true },
+);
+const slots = caseStudy.slots.map((slot) => {
+  const key = Object.keys(found).find((k) => /\/([^/]+)\.[a-z]+$/.exec(k)?.[1] === slot.file);
+  return { ...slot, image: key ? found[key].default : null };
+});
+const showDevHints = import.meta.env.DEV;
+---
+<section class="section section-green on-dark" id="case-study" aria-labelledby="case-title">
+  <div class="wrap">
+    <div class="prose">
+      <h2 id="case-title">Case study: {caseStudy.name}</h2>
+      <p class="lede">
+        One website for three pubs: {caseStudy.pubs[0]}, {caseStudy.pubs[1]} and {caseStudy.pubs[2]}.
+      </p>
+      <p>
+        Each pub gets its own page, so regulars find their local and newcomers find the right one.
+        Staff update the events page themselves, so the website says what’s happening at each pub.
+      </p>
+    </div>
+
+    <div class="shots">
+      {slots.map((slot) => (
+        <figure class={`shot shot-${slot.kind}`}>
+          {slot.image ? (
+            <Image
+              src={slot.image}
+              alt={slot.alt}
+              widths={slot.kind === 'desktop' ? [640, 960, 1400] : [300, 450, 600]}
+              sizes={slot.kind === 'desktop' ? '(min-width: 64rem) 40rem, calc(100vw - 2rem)' : '(min-width: 64rem) 14rem, 45vw'}
+              loading="lazy"
+              decoding="async"
+            />
+          ) : (
+            <div class="shot-placeholder" data-slot={slot.file}>
+              <span>Screenshot to come</span>
+              {showDevHints && <small>Add src/assets/case-study/{slot.file}.png</small>}
+            </div>
+          )}
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
