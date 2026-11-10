@@ -76,11 +76,24 @@ Astro resizes them to AVIF/WebP with explicit width and height, so there is no l
 - **After consent**: Meta Pixel `PageView`, GA4 page view. On a successful submit, Pixel `Lead` and GA4 `generate_lead` fire with a shared event ID. Clicks on `tel:`, `mailto:` and "Book a call" links send GA4 `click_call`, `click_email` and `click_book_call`.
 - **Conversions API**: if `META_CAPI_TOKEN` and `PUBLIC_META_PIXEL_ID` are set and the visitor accepted cookies, the function also sends a server-side `Lead` with the same event ID, so Meta can de-duplicate it. Email and phone are SHA-256 hashed first.
 
+## Look and feel
+
+Dark, photo-led. Warm near-black backgrounds, brass and amber accents, pump-clip red for the "Most popular" tag, and the bottle-green beermat as a small illustrated accent in the hero. Colours are tokens at the top of `src/styles/global.css`.
+
+Each big photo header is the `Band` component (`src/components/Band.astro`): an image with a dark gradient and the text laid over it. The photos live in `src/assets/photos/` and are used like this:
+
+| Photo | Where |
+| --- | --- |
+| `pint-pour.jpg` | Hero (loaded eagerly, high priority) and the social card |
+| `beer-macro.jpg` | "Most pub websites are out of date" header |
+| `garden-pint.jpg` | "What every pub website includes" header |
+| `pints-table.jpg` | Case study header (a Birra Moretti glass is partly visible, so swap it if that matters) |
+
+To change a header photo, replace the file or change the import and `position` (the focal point, as a CSS `object-position`) where `<Band>` is used. Check you have the right to use the photos commercially.
+
 ## Brand images
 
 `public/og.png` (social card) and `public/apple-touch-icon.png` are generated from `scripts/brand/*.html`. To regenerate after a change, install Playwright and run `node scripts/brand/make-brand-images.mjs`. `public/favicon.svg` is the mat.
-
-The two photos on the page (`src/assets/photos/`) came from the images supplied with the brief. Check you have the right to use them commercially.
 
 ## Lighthouse
 
@@ -88,6 +101,6 @@ Mobile, Lighthouse 13 default settings (simulated slow 4G), against the producti
 
 | Performance | Accessibility | Best practices | SEO | LCP | CLS | TBT |
 | --- | --- | --- | --- | --- | --- | --- |
-| 100 | 100 | 100 | 100 | 1.1 s | 0 | 30 to 80 ms |
+| 100 | 100 | 100 | 100 | 1.3 s | 0 | 20 to 50 ms |
 
-With dummy tracking IDs set, so the cookie banner is showing, three runs scored 96, 100 and 100 on performance (the 96 was a first-run blip with 210 ms TBT) and 100 on everything else. Re-run it on the deployed URL once it is live.
+Re-run it on the deployed URL once it is live.

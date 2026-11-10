@@ -1,8 +1,10 @@
 ---
+import Band from './Band.astro';
 import HeroMat from './HeroMat.astro';
+import pour from '../assets/photos/pint-pour.jpg';
 import { bookHref, bookIsExternal } from '../data/site';
 ---
-<section class="hero on-dark" aria-labelledby="hero-title">
+<Band image={pour} alt="A pint being poured from the tap on a pub bar." priority tall position="55% 40%" labelledby="hero-title">
   <div class="wrap hero-grid">
     <div class="hero-copy">
       <h1 id="hero-title">Websites for pubs that keep up with what’s on.</h1>
@@ -24,4 +26,4 @@ import { bookHref, bookIsExternal } from '../data/site';
     </div>
     <HeroMat />
   </div>
-</section>
+</Band>

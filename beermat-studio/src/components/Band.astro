@@ -1,0 +1,29 @@
+---
+// A full-width photo header with the text laid over it.
+import { Picture } from 'astro:assets';
+interface Props {
+  image: ImageMetadata;
+  alt?: string;
+  priority?: boolean;
+  tall?: boolean;
+  position?: string;
+  id?: string;
+  labelledby?: string;
+}
+const { image, alt = '', priority = false, tall = false, position = 'center', id, labelledby } = Astro.props;
+---
+<section class={`band on-dark${tall ? ' band-tall' : ''}`} id={id} aria-labelledby={labelledby}>
+  <div class="band-img" style={`--pos:${position}`}>
+    <Picture
+      src={image}
+      alt={alt}
+      formats={['avif', 'webp']}
+      widths={[640, 960, 1400, 2000]}
+      sizes="100vw"
+      loading={priority ? 'eager' : 'lazy'}
+      fetchpriority={priority ? 'high' : 'auto'}
+      decoding={priority ? 'sync' : 'async'}
+    />
+  </div>
+  <slot />
+</section>

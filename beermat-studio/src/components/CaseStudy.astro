@@ -1,5 +1,7 @@
 ---
 import { Image } from 'astro:assets';
+import Band from './Band.astro';
+import pints from '../assets/photos/pints-table.jpg';
 import { caseStudy } from '../data/content';
 
 // Pick up any screenshots dropped into src/assets/case-study/
@@ -13,13 +15,17 @@ const slots = caseStudy.slots.map((slot) => {
 });
 const showDevHints = import.meta.env.DEV;
 ---
-<section class="section section-green on-dark" id="case-study" aria-labelledby="case-title">
+<Band image={pints} position="50% 45%" labelledby="case-title" id="case-study">
+  <div class="wrap band-copy">
+    <h2 id="case-title">Case study: {caseStudy.name}</h2>
+    <p class="intro">
+      One website for three pubs: {caseStudy.pubs[0]}, {caseStudy.pubs[1]} and {caseStudy.pubs[2]}.
+    </p>
+  </div>
+</Band>
+<section class="section section-board on-dark" aria-label="Case study details">
   <div class="wrap">
     <div class="prose">
-      <h2 id="case-title">Case study: {caseStudy.name}</h2>
-      <p class="lede">
-        One website for three pubs: {caseStudy.pubs[0]}, {caseStudy.pubs[1]} and {caseStudy.pubs[2]}.
-      </p>
       <p>
         Each pub gets its own page, so regulars find their local and newcomers find the right one.
         Staff update the events page themselves, so the website says what’s happening at each pub.

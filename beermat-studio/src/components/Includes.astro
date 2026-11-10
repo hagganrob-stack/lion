@@ -1,16 +1,16 @@
 ---
-import { Picture } from 'astro:assets';
+import Band from './Band.astro';
 import garden from '../assets/photos/garden-pint.jpg';
 import { includes } from '../data/content';
 ---
-<section class="section section-board" id="included" aria-labelledby="inc-title">
+<Band image={garden} alt="" position="50% 35%" labelledby="inc-title" id="included">
+  <div class="wrap band-copy">
+    <h2 id="inc-title">What every pub website includes</h2>
+    <p class="intro">Whichever plan you choose, you get the things pub customers actually look for.</p>
+  </div>
+</Band>
+<section class="section section-board" aria-label="Included features">
   <div class="wrap">
-    <div class="prose">
-      <h2 id="inc-title">What every pub website includes</h2>
-      <p class="intro">
-        Whichever plan you choose, you get the things pub customers actually look for.
-      </p>
-    </div>
     <ul class="ticks">
       {includes.map((item) => (
         <li>
@@ -19,16 +19,5 @@ import { includes } from '../data/content';
         </li>
       ))}
     </ul>
-    <div class="photo garden-photo">
-      <Picture
-        src={garden}
-        alt="A glass of beer on a table in a pub garden in the evening, with string lights and people chatting."
-        formats={['avif', 'webp']}
-        widths={[480, 800, 1200]}
-        sizes="(min-width: 64rem) 70rem, calc(100vw - 2rem)"
-        loading="lazy"
-        decoding="async"
-      />
-    </div>
   </div>
 </section>
